@@ -6,7 +6,7 @@ import {
 } from './token.entity'
 import { ValidationError } from '@/helpers/customErrors'
 import { ErrorsDictionary } from '@/messages/errors'
-import { getEnv } from '@/utils/env'
+import { getEnv } from '@/utils/server'
 
 export class Token implements TokenEntity {
   private readonly JWT_SECRET = getEnv('JWT_SECRET')

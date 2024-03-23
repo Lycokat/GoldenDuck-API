@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import { ErrorsDictionary } from '../../messages/errors'
 import { AuthorizationError, ConfigError } from '../customErrors'
-import { getEnv } from '@/utils/env'
+import { getEnv } from '@/utils/server'
 
 export class JWT {
   private readonly secretKey: string

@@ -19,8 +19,7 @@ import { InvestmentRouter } from '@/core/investment/infraestructure/route/invest
 import { SessionRouter } from '@/core/session/infraestructure/route/session.route'
 import { TransactionRouter } from '@/core/transaction/infraestructure/route/transaction.route'
 import { LoanRouter } from '@/core/loan/infraestructure/route/loan.route'
-import { getEnv } from '@/utils/env'
-import { findAvailablePort } from '@/utils/server'
+import { findAvailablePort, getEnv } from '@/utils/server'
 
 const app = express()
 app.disabled('x-powered-by')

@@ -19,12 +19,13 @@ import { InvestmentRouter } from '@/core/investment/infraestructure/route/invest
 import { SessionRouter } from '@/core/session/infraestructure/route/session.route'
 import { TransactionRouter } from '@/core/transaction/infraestructure/route/transaction.route'
 import { LoanRouter } from '@/core/loan/infraestructure/route/loan.route'
+import { getEnv } from '@/utils/env'
 
 const app = express()
 app.disabled('x-powered-by')
 
 /* --- Get environment variables --- */
-const port = process.env.PORT ?? 0
+const port = getEnv('PORT')
 
 /* --- Middlewares --- */
 app.use(morgan('dev')) // HTTP request logger middleware for node.js

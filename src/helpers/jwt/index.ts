@@ -1,14 +1,15 @@
 import jwt from 'jsonwebtoken'
 import { ErrorsDictionary } from '../../messages/errors'
 import { AuthorizationError, ConfigError } from '../customErrors'
+import { getEnv } from '@/utils/env'
 
 export class JWT {
   private readonly secretKey: string
   private readonly tempSecretKey: string
 
   constructor () {
-    const JWT_SECRET = process.env.JWT_SECRET
-    const JWT_TEMP_SECRET = process.env.JWT_TEMP_SECRET
+    const JWT_SECRET = getEnv('JWT_SECRET')
+    const JWT_TEMP_SECRET = getEnv('JWT_TEMP_SECRET')
 
     if (JWT_SECRET === undefined || JWT_TEMP_SECRET === undefined) {
       throw new ConfigError(ErrorsDictionary.NoVariableEnv('JWT_SECRET'))

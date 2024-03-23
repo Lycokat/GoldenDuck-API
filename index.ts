@@ -20,6 +20,7 @@ import { SessionRouter } from '@/core/session/infraestructure/route/session.rout
 import { TransactionRouter } from '@/core/transaction/infraestructure/route/transaction.route'
 import { LoanRouter } from '@/core/loan/infraestructure/route/loan.route'
 import { getEnv } from '@/utils/env'
+import { findAvailablePort } from '@/utils/server'
 
 const app = express()
 app.disabled('x-powered-by')
@@ -61,7 +62,7 @@ app.use((_req, res) => res.status(404).send()) // 404 Not Found
 app.use(ErrorHandler) // Error handler
 
 // Start the server
-app.listen(port, () => {
+findAvailablePort(app, Number(port)).then((AvailablePort) => {
   console.log('\n')
   console.log('        =-.                .--        ')
   console.log('       *+:=*+.    .     .+*=:*=       ')
@@ -77,7 +78,9 @@ app.listen(port, () => {
   console.log(' .      =*++++*=     .=*++++*-        ')
   console.log('\n')
   console.log('» Golden-Duck-API is running')
-  console.log('» PORT: ' + port)
-  console.log('» URL: http://localhost:' + port)
+  console.log('» PORT: ' + AvailablePort)
+  console.log('» URL: http://localhost:' + AvailablePort)
   console.log('\n')
+}).catch((error) => {
+  console.error(error)
 })
